@@ -1,2 +1,3 @@
-def hello() -> str:
-    return "Hello from airtake!"
+from .client import Client as Airtake
+
+__all__ = ['Airtake']

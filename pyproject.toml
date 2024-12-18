@@ -1,14 +1,15 @@
 [project]
 name = "airtake"
-version = "0.1.0"
+version = "0.2.0"
 description = "Airtake"
+readme = "README.md"
 authors = [
     { name = "Bae Junehyeon", email = "devunt@gmail.com" }
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "fastnanoid>=0.4.1",
     "httpx>=0.28.1",
+    "nanoid>=2.0.0",
 ]
 
 [build-system]
