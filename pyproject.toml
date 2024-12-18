@@ -1,0 +1,16 @@
+[project]
+name = "airtake"
+version = "0.1.0"
+description = "Airtake"
+authors = [
+    { name = "Bae Junehyeon", email = "devunt@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "fastnanoid>=0.4.1",
+    "httpx>=0.28.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
