@@ -1,8 +1,8 @@
-import httpx
-from nanoid import generate
+import json
+import urllib.request
 from typing import Any
 from .props import populate_props
-from .utils import timestamp
+from .utils import generate_id, timestamp
 from .types import Props
 
 class Client:
@@ -22,7 +22,7 @@ class Client:
 
     self._request({
       'type': 'track',
-      'id': generate(size=32),
+      'id': generate_id(),
       'timestamp': timestamp(),
       'actorId': actor_id,
       'name': event,
@@ -37,7 +37,7 @@ class Client:
 
     self._request({
       'type': 'identify',
-      'id': generate(size=32),
+      'id': generate_id(),
       'timestamp': timestamp(),
       'actorId': actor_id,
       'deviceId': device_id,
@@ -52,13 +52,17 @@ class Client:
     return f'{self.base_url}/v1/events'
 
   def _request(self, body: dict[str, Any]) -> None:
-    response = httpx.post(
-      self.endpoint,
-      headers={
-        'X-Airtake-Token': self.token,
-      },
-      json=body,
-    )
+    try:
+      req = urllib.request.Request(
+        url=self.endpoint,
+        data=json.dumps(body).encode(),
+        method='POST',
+        headers={
+          'X-Airtake-Token': self.token,
+        },
+      )
 
-    if self.debug:
-      response.raise_for_status()
+      urllib.request.urlopen(req)
+    except:
+      if self.debug:
+        raise

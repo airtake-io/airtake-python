@@ -1,16 +1,13 @@
 [project]
 name = "airtake"
-version = "0.2.0"
+version = "0.3.0"
 description = "Airtake"
 readme = "README.md"
 authors = [
     { name = "Bae Junehyeon", email = "devunt@gmail.com" }
 ]
 requires-python = ">=3.10"
-dependencies = [
-    "httpx>=0.28.1",
-    "nanoid>=2.0.0",
-]
+dependencies = []
 
 [build-system]
 requires = ["hatchling"]
